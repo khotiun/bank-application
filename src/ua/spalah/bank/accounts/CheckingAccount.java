@@ -1,4 +1,4 @@
-package accounts;
+package ua.spalah.bank.accounts;
 
 /**
  * Created by MyPc on 29.12.2016.
@@ -28,9 +28,13 @@ public class CheckingAccount extends Account{//кредитный счет
 
     @Override
     public String toString() {
-        return "accounts.CheckingAccount{" +
+        return "CheckingAccount{" +
                 "balance=" + getBalance() +
                 "overdraft=" + overdraft +
                 '}';
+    }
+
+    public double getOverdraft() {
+        return overdraft;
     }
 }

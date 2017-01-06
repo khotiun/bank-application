@@ -1,4 +1,4 @@
-package accounts;
+package ua.spalah.bank.accounts;
 
 /**
  * Created by MyPc on 29.12.2016.

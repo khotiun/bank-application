@@ -1,4 +1,6 @@
-import accounts.Account;
+package ua.spalah.bank;
+
+import ua.spalah.bank.accounts.Account;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -6,7 +8,7 @@ import java.util.Objects;
 /**
  * Created by MyPc on 28.12.2016.
  */
-public class Client {
+public class Client implements Comparable<Client> {
 
     private String name;
     private Gender gender;
@@ -66,7 +68,7 @@ public class Client {
         return "Client{ " +
                  gender.getSalutation() +
                 "" + name  +
-                ", accounts=" + accounts +
+                ", bank_application.accounts=" + accounts +
                 ", activeAccount=" + activeAccount +
                 '}';
     }
@@ -83,5 +85,11 @@ public class Client {
     @Override
     public int hashCode() {
         return Objects.hash(name, gender);
+    }
+
+    @Override
+    public int compareTo(Client o)
+    {
+        return this.name.compareTo(o.getName());
     }
 }

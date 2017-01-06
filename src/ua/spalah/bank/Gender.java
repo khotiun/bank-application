@@ -1,3 +1,5 @@
+package ua.spalah.bank;
+
 /**
  * Created by MyPc on 28.12.2016.
  */
