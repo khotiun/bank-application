@@ -58,7 +58,6 @@ public class Main {
         System.out.println("Введите имя клиента :  ");
         String name = scanner.nextLine();
         System.out.println(bank.getClientInfo(name));
-        System.out.println();
 
     }
 
