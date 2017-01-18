@@ -1,9 +1,9 @@
-package ua.spalah.bank.accounts;
+package ua.spalah.bank.models;
 
 /**
  * Created by MyPc on 29.12.2016.
  */
-public class CheckingAccount extends Account{//кредитный счет
+public class CheckingAccount extends SavingAccount{//кредитный счет
 
     private double overdraft;//кредитный лимит
 
@@ -17,24 +17,23 @@ public class CheckingAccount extends Account{//кредитный счет
     }
 
     @Override
-    public void withdraw(double money) {
-        double available = getBalance() + overdraft;//доступные денежные средства
-        if (available < money) {
-            System.out.println("Превышен лимит снятия средств!");
-        } else {
-            setBalance(getBalance() - money);
-        }
+    public AccountType getType() {
+        return AccountType.CHECKING;
+}
+
+    public void setOverdraft(double overdraft) {
+        this.overdraft = overdraft;
+    }
+
+    public double getOverdraft() {
+        return overdraft;
     }
 
     @Override
     public String toString() {
         return "CheckingAccount{" +
-                "balance=" + getBalance() +
                 "overdraft=" + overdraft +
+                "balance=" + getBalance() +
                 '}';
-    }
-
-    public double getOverdraft() {
-        return overdraft;
     }
 }

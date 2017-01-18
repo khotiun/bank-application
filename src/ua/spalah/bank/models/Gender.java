@@ -1,4 +1,4 @@
-package ua.spalah.bank;
+package ua.spalah.bank.models;
 
 /**
  * Created by MyPc on 28.12.2016.

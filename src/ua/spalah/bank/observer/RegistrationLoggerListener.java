@@ -1,7 +1,7 @@
 package ua.spalah.bank.observer;
 
 
-import ua.spalah.bank.Client;
+import ua.spalah.bank.models.Client;
 
 import java.time.LocalDateTime;
 

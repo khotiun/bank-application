@@ -1,11 +1,9 @@
-package ua.spalah.bank.service;
+package ua.spalah.bank.services.iml;
 
-import ua.spalah.bank.Bank;
-import ua.spalah.bank.Client;
-import ua.spalah.bank.accounts.Account;
-import ua.spalah.bank.accounts.CheckingAccount;
+import ua.spalah.bank.models.*;
+import ua.spalah.bank.services.BankReportService;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -21,7 +19,7 @@ public class BankReportServiceImpl implements BankReportService {
     public int getNumberOfAccounts(Bank bank) {
         int sumAccounts = 0;
         for (Client client : bank.getClients()) {
-           sumAccounts += client.getAccounts().size();
+            sumAccounts += client.getAccounts().size();
         }
         return sumAccounts;
     }
@@ -30,7 +28,9 @@ public class BankReportServiceImpl implements BankReportService {
     public double getTotalAccountSum(Bank bank) {
         double sum = 0;
         for (Client client : bank.getClients()) {
-            sum += client.getTotalBalance();
+            for (Account account : client.getAccounts()) {
+                sum += account.getBalance();
+            }
         }
         return sum;
     }
@@ -40,21 +40,24 @@ public class BankReportServiceImpl implements BankReportService {
         double sumCredit = 0;
         for (Client client : bank.getClients()) {
             for (Account account : client.getAccounts()) {
-                if (account.getClass().getName().toString().equals("CheckingAccount"))
-                {
-                    CheckingAccount checkingAccount =(CheckingAccount) account;
+                if (account.getType().equals(AccountType.CHECKING)) {
+                    CheckingAccount checkingAccount = (CheckingAccount) account;
                     sumCredit += checkingAccount.getOverdraft();
                 }
-
             }
         }
         return sumCredit;
-
     }
 
     @Override
     public List<Client> getClientsSortedByName(Bank bank) {
-        Collections.sort(bank.getClients());
-        return bank.getClients();
+        List<Client> clients = bank.getClients();
+        clients.sort(new Comparator<Client>() {
+            @Override
+            public int compare(Client client1, Client client2) {
+                return client1.getName().compareTo(client2.getName());
+            }
+        });
+        return clients;
     }
 }

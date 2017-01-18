@@ -1,6 +1,4 @@
-package ua.spalah.bank;
-
-import ua.spalah.bank.accounts.Account;
+package ua.spalah.bank.models;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -8,7 +6,7 @@ import java.util.Objects;
 /**
  * Created by MyPc on 28.12.2016.
  */
-public class Client implements Comparable<Client> {
+public class Client {
 
     private String name;
     private Gender gender;
@@ -20,31 +18,20 @@ public class Client implements Comparable<Client> {
         this.gender = gender;
     }
 
-    public void addAccount(Account account)
-    {
-        if(accounts.size() == 0) {
-            activeAccount = account;
-        }
-            accounts.add(account);
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setActiveAccount(Account account)
-    {
-       if(accounts.contains(account))
-       {
-           activeAccount = account;
-       }
-       else
-           System.out.println("Такого счета у клиента нет!");
-
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
-    public int getTotalBalance()
-    {
-        int allBalance = 0;
-        for (Account acc : accounts) {
-            allBalance += acc.getBalance();
-        }
-        return allBalance;
+
+    public void setAccounts(ArrayList<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public void setActiveAccount(Account activeAccount) {
+        this.activeAccount = activeAccount;
     }
 
     public String getName() {
@@ -85,11 +72,5 @@ public class Client implements Comparable<Client> {
     @Override
     public int hashCode() {
         return Objects.hash(name, gender);
-    }
-
-    @Override
-    public int compareTo(Client o)
-    {
-        return this.name.compareTo(o.getName());
     }
 }

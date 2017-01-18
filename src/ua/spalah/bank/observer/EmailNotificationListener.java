@@ -1,7 +1,7 @@
 package ua.spalah.bank.observer;
 
 
-import ua.spalah.bank.Client;
+import ua.spalah.bank.models.Client;
 
 /**
  * Created by MyPc on 05.01.2017.
