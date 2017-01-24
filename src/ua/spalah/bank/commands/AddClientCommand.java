@@ -28,21 +28,27 @@ public class AddClientCommand implements Command {//добавляет ново�
         String gender = scanner.nextLine().toUpperCase();
         if (gender.equals("MALE")) {
             BankCommander.currentClient = clientService.saveClient(BankCommander.currentBank, new Client(name, Gender.MALE));
-            System.out.println("Enter your e-mail client:");//Введите почту клиента:
-            String mail = scanner.nextLine();
-            boolean bMail = mail.matches("[a-zA-Z0-9.]{1,50}@[a-zA-Z0-9.]{1,50}\\.[a-zA-Z0-9.]{2,5}");
-            if (bMail) {
-                BankCommander.currentClient.setEmail(mail);
-            } else {
-                System.out.println("Mail is invalid!");//Почта введена не коректно!
+            while(true) {
+                System.out.println("Enter your e-mail client:");//Введите почту клиента:
+                String mail = scanner.nextLine();
+                boolean bMail = mail.matches("[a-zA-Z0-9.]{1,50}@[a-zA-Z0-9.]{1,50}\\.[a-zA-Z0-9.]{2,5}");
+                if (bMail) {
+                    BankCommander.currentClient.setEmail(mail);
+                    break;
+                } else {
+                    System.out.println("Mail is invalid!");//Почта введена не коректно!
+                }
             }
-            System.out.println("Enter the customer's phone number:");//Введите телефон клиента:
-            String phone = scanner.nextLine();
-            boolean bPhone = phone.matches("[0-9+]{5,13}");
-            if (bPhone) {
-                BankCommander.currentClient.setEmail(phone);
-            } else {
-                System.out.println("Client telephone is invalid!");//Телефон клиента введен не коректно!
+            while (true) {
+                System.out.println("Enter the customer's phone number:");//Введите телефон клиента:
+                String phone = scanner.nextLine();
+                boolean bPhone = phone.matches("[0-9+]{5,13}");
+                if (bPhone) {
+                    BankCommander.currentClient.setEmail(phone);
+                    break;
+                } else {
+                    System.out.println("Client telephone is invalid!");//Телефон клиента введен не коректно!
+                }
             }
             System.out.println("Enter the city where the client resides:");//Введите город, где проживает клиент:
             String city = scanner.nextLine();

@@ -1,10 +1,10 @@
 package ua.spalah.bank.services.iml;
 
+import ua.spalah.bank.BankCommander;
 import ua.spalah.bank.models.*;
 import ua.spalah.bank.services.BankReportService;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by MyPc on 05.01.2017.
@@ -59,5 +59,21 @@ public class BankReportServiceImpl implements BankReportService {
             }
         });
         return clients;
+    }
+
+    @Override
+    public Map<String, List<Client>> getClientsByCity(Bank bank) {
+        Map<String, List<Client>> listCity = new TreeMap<>();
+        for (Client client : BankCommander.currentBank.getClients()) {
+            if (client.getCity() != null) {
+                if (listCity.containsKey(client.getCity())) {
+                    listCity.get(client.getCity()).add(client);
+                } else {
+                    List<Client> listClient = new ArrayList<>();
+                    listCity.put(client.getCity(),listClient);
+                }
+            }
+        }
+        return listCity;
     }
 }
