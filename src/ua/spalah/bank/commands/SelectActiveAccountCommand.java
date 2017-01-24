@@ -18,7 +18,7 @@ public class SelectActiveAccountCommand implements Command {//позволяет
         ArrayList<Account> accounts = BankCommander.currentClient.getAccounts();
         System.out.println(BankCommander.currentClient.getAccounts());
         System.out.println("Active account - " + BankCommander.currentClient.getActiveAccount());
-        System.out.println("Select an active account for the current client - ");//Выберите активный счет для текущего клиента
+        System.out.println("Select an active account for the current client: ");//Выберите активный счет для текущего клиента
         Scanner scanner = new Scanner(System.in);
         try {
             int numberAccount = Integer.parseInt(scanner.nextLine());
@@ -33,6 +33,11 @@ public class SelectActiveAccountCommand implements Command {//позволяет
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"3\" for get Select Active Account command");
+        System.out.println("for get Select Active Account command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return true;
     }
 }

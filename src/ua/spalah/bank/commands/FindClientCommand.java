@@ -24,6 +24,7 @@ public class FindClientCommand implements Command {
         String name =  reader.nextLine();
         try {
            BankCommander.currentClient = clientService.findClientByName(BankCommander.currentBank,name);
+            System.out.println(BankCommander.currentClient);
         } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -31,6 +32,11 @@ public class FindClientCommand implements Command {
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"1\" for get Find Client command");//Найти клиента
+        System.out.println("for get Find Client command");//Найти клиента
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return false;
     }
 }

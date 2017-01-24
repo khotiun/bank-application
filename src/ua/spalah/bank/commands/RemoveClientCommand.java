@@ -26,6 +26,10 @@ public class RemoveClientCommand implements Command {//удаляет клиен
         try {
             Client client = clientService.findClientByName(BankCommander.currentBank, name);
             clientService.deleteClient(BankCommander.currentBank, client);
+            if(name.equals(BankCommander.currentClient.getName()))
+            {
+                BankCommander.currentClient = null;
+            }
         } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -34,6 +38,11 @@ public class RemoveClientCommand implements Command {//удаляет клиен
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"9\" for get Remove Clients command");
+        System.out.println("for get Remove Client command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return false;
     }
 }

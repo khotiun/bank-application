@@ -64,6 +64,11 @@ public class AddAccountCommand implements Command {//добавляет счет
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"8\" for get Add Account command");
+        System.out.println("for get Add Account command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return true;
     }
 }

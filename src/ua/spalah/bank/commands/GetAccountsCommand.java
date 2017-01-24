@@ -19,6 +19,11 @@ public class GetAccountsCommand implements Command{//выводит список
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"2\" for take Get Accounts command");
+        System.out.println("for take Get Accounts command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return true;
     }
 }

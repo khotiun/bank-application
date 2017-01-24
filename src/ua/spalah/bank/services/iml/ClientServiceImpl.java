@@ -17,12 +17,11 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
         List<Client> allClient = bank.getClients();
-        for (Client client : bank.getClients()) {
+        for (Client client : allClient) {
             if (client.getName().equals(name))
                 return client;
-
         }
-       throw  new ClientNotFoundException(name);
+        throw new ClientNotFoundException(name);
     }
 
     @Override
@@ -52,13 +51,13 @@ public class ClientServiceImpl implements ClientService {
     public void setActiveAccount(Account account, Client client) {
         ArrayList<Account> accounts = client.getAccounts();
         if (accounts.contains(account))
-        client.setActiveAccount(account);
+            client.setActiveAccount(account);
     }
 
     @Override
     public double getTotalBalance(Client client) {
         int allBalance = 0;
-        for ( Account account: client.getAccounts()) {
+        for (Account account : client.getAccounts()) {
             allBalance += account.getBalance();
         }
         return allBalance;

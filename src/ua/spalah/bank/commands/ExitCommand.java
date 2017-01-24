@@ -11,6 +11,11 @@ public class ExitCommand implements Command {//прекращает выполн
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"11\" for get Exit command");
+        System.out.println("for get Exit command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return false;
     }
 }

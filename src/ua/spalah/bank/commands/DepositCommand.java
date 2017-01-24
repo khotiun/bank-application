@@ -30,6 +30,11 @@ public class DepositCommand implements Command {//кладет введенну�
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"4\" for get Deposit command");
+        System.out.println("for get Deposit command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return false;
     }
 }

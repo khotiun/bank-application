@@ -1,7 +1,6 @@
 package ua.spalah.bank.commands;
 
 import ua.spalah.bank.BankCommander;
-import ua.spalah.bank.exception.ClientNotFoundException;
 import ua.spalah.bank.exception.NotEnoughFundsException;
 import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.iml.AccountServiceImpl;
@@ -23,20 +22,29 @@ public class TransferCommand implements Command {//переводит деньг
 
     @Override
     public void execute() {
+        for (Client client : BankCommander.currentBank.getClients()) {
+            System.out.println(client.getName());
+        }
         System.out.println("Enter the name of the client on whose account you want to transfer money :");//Введите имя клиента на счет которого вы хотите перевести деньги
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
-        Client toClient;
-        try {
-            toClient = clientService.findClientByName(BankCommander.currentBank, name);
-            System.out.println("Enter the amount you want to transfer :");//Введите сумму которую хотите перевести
-            double sum = Integer.parseInt(scanner.nextLine());
-            try {
-                accountService.transfer(BankCommander.currentClient.getActiveAccount(), toClient.getActiveAccount(),sum);
-            } catch (NotEnoughFundsException e) {
-                System.out.println(e.getMessage());
+        Client toClient = null;
+        for (Client client: BankCommander.currentBank.getClients()) {
+            if (client.getName().equals(name))
+            {
+                toClient = client;
             }
-        } catch (ClientNotFoundException e) {
+        }
+        if (toClient == null)
+        {
+            System.out.println("This client was not found in the database!");//Такой клиент не был найден в бвзе!
+            return;
+        }
+        System.out.println("Enter the amount you want to transfer :");//Введите сумму которую хотите перевести
+        double sum = Integer.parseInt(scanner.nextLine());
+        try {
+            accountService.transfer(BankCommander.currentClient.getActiveAccount(), toClient.getActiveAccount(),sum);
+        } catch (NotEnoughFundsException e) {
             System.out.println(e.getMessage());
         }
 
@@ -44,6 +52,11 @@ public class TransferCommand implements Command {//переводит деньг
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"6\" for get Transfer command");
+        System.out.println("for get Transfer command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return true;
     }
 }

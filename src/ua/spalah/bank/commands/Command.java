@@ -8,4 +8,5 @@ public interface Command {
     void execute();//выполнить
     // выводит информацию о команде в консоль
     void printCommandInfo();
+    boolean selectCurentClient();
 }

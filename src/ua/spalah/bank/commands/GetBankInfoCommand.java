@@ -16,6 +16,7 @@ public class GetBankInfoCommand implements Command {//печатает полн�
 
     @Override
     public void execute() {
+        System.out.println(BankCommander.currentClient);
         System.out.println(bankReportService.getClientsSortedByName(BankCommander.currentBank).toString());
         System.out.println(bankReportService.getNumberOfAccounts(BankCommander.currentBank));
         System.out.println(bankReportService.getNumberOfClients(BankCommander.currentBank));
@@ -25,6 +26,11 @@ public class GetBankInfoCommand implements Command {//печатает полн�
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"10\" for take Get Bank Info command");
+        System.out.println("for take Get Bank Info command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return false;
     }
 }

@@ -38,6 +38,11 @@ public class AddClientCommand implements Command {//добавляет ново�
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"7\" for get add Client command");
+        System.out.println("for get add Client command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return false;
     }
 }

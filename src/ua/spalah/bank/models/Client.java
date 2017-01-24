@@ -30,6 +30,12 @@ public class Client {
         this.accounts = accounts;
     }
 
+    public void setAccount(Account account) {
+        if (accounts.isEmpty())
+            activeAccount = account;
+        accounts.add(account);
+    }
+
     public void setActiveAccount(Account activeAccount) {
         this.activeAccount = activeAccount;
     }
@@ -53,8 +59,8 @@ public class Client {
     @Override
     public String toString() {
         return "Client{ " +
-                 gender.getSalutation() +
-                "" + name  +
+                gender.getSalutation() +
+                "" + name +
                 ", bank_application.accounts=" + accounts +
                 ", activeAccount=" + activeAccount +
                 '}';
@@ -62,11 +68,11 @@ public class Client {
 
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) return true;
+        if (this == obj) return true;
         if (obj == null) return false;
-        if(getClass() != obj.getClass()) return false;
+        if (getClass() != obj.getClass()) return false;
         Client client = (Client) obj;
-        return Objects.equals(name, client.name) && Objects.equals(gender,client.gender);
+        return Objects.equals(name, client.name) && Objects.equals(gender, client.gender);
     }
 
     @Override

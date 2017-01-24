@@ -33,6 +33,11 @@ public class WithdrawCommand implements Command {//снимает деньги �
 
     @Override
     public void printCommandInfo() {
-        System.out.println("Enter \"5\" for get Withdraw command");
+        System.out.println("for get Withdraw command");
+    }
+
+    @Override
+    public boolean selectCurentClient() {
+        return true;
     }
 }
