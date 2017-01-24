@@ -1,7 +1,6 @@
 package ua.spalah.bank.models;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Created by MyPc on 28.12.2016.
@@ -12,6 +11,9 @@ public class Client {
     private Gender gender;
     private ArrayList<Account> accounts = new ArrayList<>();
     private Account activeAccount;
+    private String email;
+    private String tel;
+    private String city;
 
     public Client(String name, Gender gender) {
         this.name = name;
@@ -40,6 +42,18 @@ public class Client {
         this.activeAccount = activeAccount;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getName() {
         return name;
     }
@@ -56,27 +70,58 @@ public class Client {
         return activeAccount;
     }
 
-    @Override
-    public String toString() {
-        return "Client{ " +
-                gender.getSalutation() +
-                "" + name +
-                ", bank_application.accounts=" + accounts +
-                ", activeAccount=" + activeAccount +
-                '}';
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) return false;
-        Client client = (Client) obj;
-        return Objects.equals(name, client.name) && Objects.equals(gender, client.gender);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Client client = (Client) o;
+
+        if (name != null ? !name.equals(client.name) : client.name != null) return false;
+        if (gender != client.gender) return false;
+        if (accounts != null ? !accounts.equals(client.accounts) : client.accounts != null) return false;
+        if (activeAccount != null ? !activeAccount.equals(client.activeAccount) : client.activeAccount != null)
+            return false;
+        if (email != null ? !email.equals(client.email) : client.email != null) return false;
+        if (tel != null ? !tel.equals(client.tel) : client.tel != null) return false;
+        return city != null ? city.equals(client.city) : client.city == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, gender);
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (accounts != null ? accounts.hashCode() : 0);
+        result = 31 * result + (activeAccount != null ? activeAccount.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (tel != null ? tel.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        return result;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "name='" + name + '\'' +
+                ", gender=" + gender +
+                ", accounts=" + accounts +
+                ", activeAccount=" + activeAccount +
+                ", email='" + email + '\'' +
+                ", tel='" + tel + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }
