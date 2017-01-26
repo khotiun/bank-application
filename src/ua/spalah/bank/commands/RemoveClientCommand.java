@@ -26,8 +26,7 @@ public class RemoveClientCommand implements Command {//удаляет клиен
         try {
             Client client = clientService.findClientByName(BankCommander.currentBank, name);
             clientService.deleteClient(BankCommander.currentBank, client);
-            if(name.equals(BankCommander.currentClient.getName()))
-            {
+            if (name.equals(BankCommander.currentClient.getName())) {
                 BankCommander.currentClient = null;
             }
         } catch (ClientNotFoundException e) {

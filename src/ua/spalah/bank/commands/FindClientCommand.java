@@ -21,9 +21,9 @@ public class FindClientCommand implements Command {
     public void execute() {
         Scanner reader = new Scanner(System.in);
         System.out.println("Enter the name of the client :"); //Введите имя клиента
-        String name =  reader.nextLine();
+        String name = reader.nextLine();
         try {
-           BankCommander.currentClient = clientService.findClientByName(BankCommander.currentBank,name);
+            BankCommander.currentClient = clientService.findClientByName(BankCommander.currentBank, name);
             System.out.println(BankCommander.currentClient);
         } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());

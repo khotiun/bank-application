@@ -5,6 +5,8 @@ package ua.spalah.bank.models;
  */
 public interface Account {
     AccountType getType();
+
     double getBalance();
+
     void setBalance(double balance);
 }

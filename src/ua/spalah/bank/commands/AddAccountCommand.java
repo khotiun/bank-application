@@ -23,38 +23,32 @@ public class AddAccountCommand implements Command {//добавляет счет
         System.out.println("Add account to new client. SAVING or CHECKING?");//Добавить вид счета: сберегательный или кредитный
         Scanner scanner = new Scanner(System.in);
         String typeAccount = scanner.nextLine().toUpperCase();
-        if (typeAccount.equals("SAVING"))
-        {
+        if (typeAccount.equals("SAVING")) {
             System.out.println("Enter the amount that will be on the account :");//Введите сумму которая будет на счету
             double amount = Double.parseDouble(scanner.nextLine());
             SavingAccount savingAccount = new SavingAccount(amount);
             clientService.addAccount(savingAccount, BankCommander.currentClient);
-            if (BankCommander.currentClient.getAccounts().size() == 1)
-            {
+            if (BankCommander.currentClient.getAccounts().size() == 1) {
                 BankCommander.currentClient.setActiveAccount(savingAccount);
-            }else{
+            } else {
                 System.out.println("Make this account active. YES or NO?");//Сделать этот счет активным. да или нет?
                 String answer = scanner.nextLine();
-                if (answer.equals("YES"))
-                {
+                if (answer.equals("YES")) {
                     BankCommander.currentClient.setActiveAccount(savingAccount);
                 }
             }
-        }else if (typeAccount.equals("CHECKING"))
-        {
+        } else if (typeAccount.equals("CHECKING")) {
             System.out.println("Enter the amount that will be on the account :");//Введите сумму которая будет на счету
             double balance = Double.parseDouble(scanner.nextLine());
             System.out.println("Enter the overdraft that will be on the account :");//Введите перелимит которая будет на счету
             double overdraft = Double.parseDouble(scanner.nextLine());
             CheckingAccount checkingAccount = new CheckingAccount(balance, overdraft);
-            if (BankCommander.currentClient.getAccounts().size() == 1)
-            {
+            if (BankCommander.currentClient.getAccounts().size() == 1) {
                 BankCommander.currentClient.setActiveAccount(checkingAccount);
-            }else{
+            } else {
                 System.out.println("Make this account active. YES or NO?");//Сделать этот счет активным. да или нет?
                 String answer = scanner.nextLine();
-                if (answer.equals("YES"))
-                {
+                if (answer.equals("YES")) {
                     BankCommander.currentClient.setActiveAccount(checkingAccount);
                 }
             }

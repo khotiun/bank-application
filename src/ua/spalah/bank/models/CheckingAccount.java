@@ -3,7 +3,7 @@ package ua.spalah.bank.models;
 /**
  * Created by MyPc on 29.12.2016.
  */
-public class CheckingAccount extends SavingAccount{//кредитный счет
+public class CheckingAccount extends SavingAccount {//кредитный счет
 
     private double overdraft;//кредитный лимит
 
@@ -19,7 +19,7 @@ public class CheckingAccount extends SavingAccount{//кредитный счет
     @Override
     public AccountType getType() {
         return AccountType.CHECKING;
-}
+    }
 
     public void setOverdraft(double overdraft) {
         this.overdraft = overdraft;

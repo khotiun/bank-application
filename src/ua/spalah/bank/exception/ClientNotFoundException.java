@@ -6,6 +6,6 @@ package ua.spalah.bank.exception;
 public class ClientNotFoundException extends BankException {//Клиент уже существует исключение
 
     public ClientNotFoundException(String name) {
-        super("Client " + name + " already exists");//уже существует
+        super("Client " + name + " not found!");//Клиент не найден
     }
 }

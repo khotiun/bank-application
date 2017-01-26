@@ -28,7 +28,7 @@ public class AddClientCommand implements Command {//добавляет ново�
         String gender = scanner.nextLine().toUpperCase();
         if (gender.equals("MALE")) {
             BankCommander.currentClient = clientService.saveClient(BankCommander.currentBank, new Client(name, Gender.MALE));
-            while(true) {
+            while (true) {
                 System.out.println("Enter your e-mail client:");//Введите почту клиента:
                 String mail = scanner.nextLine();
                 boolean bMail = mail.matches("[a-zA-Z0-9.]{1,50}@[a-zA-Z0-9.]{1,50}\\.[a-zA-Z0-9.]{2,5}");

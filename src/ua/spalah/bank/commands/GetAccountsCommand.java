@@ -5,8 +5,7 @@ import ua.spalah.bank.BankCommander;
 /**
  * Created by MyPc on 18.01.2017.
  */
-public class GetAccountsCommand implements Command{//выводит список счетов текущего клиента помечая активный
-
+public class GetAccountsCommand implements Command {//выводит список счетов текущего клиента помечая активный
 
 
     @Override

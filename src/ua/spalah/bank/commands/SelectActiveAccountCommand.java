@@ -28,7 +28,6 @@ public class SelectActiveAccountCommand implements Command {//позволяет
         }
 
 
-
     }
 
     @Override

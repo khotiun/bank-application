@@ -29,21 +29,19 @@ public class TransferCommand implements Command {//переводит деньг
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
         Client toClient = null;
-        for (Client client: BankCommander.currentBank.getClients()) {
-            if (client.getName().equals(name))
-            {
+        for (Client client : BankCommander.currentBank.getClients()) {
+            if (client.getName().equals(name)) {
                 toClient = client;
             }
         }
-        if (toClient == null)
-        {
+        if (toClient == null) {
             System.out.println("This client was not found in the database!");//Такой клиент не был найден в бвзе!
             return;
         }
         System.out.println("Enter the amount you want to transfer :");//Введите сумму которую хотите перевести
         double sum = Integer.parseInt(scanner.nextLine());
         try {
-            accountService.transfer(BankCommander.currentClient.getActiveAccount(), toClient.getActiveAccount(),sum);
+            accountService.transfer(BankCommander.currentClient.getActiveAccount(), toClient.getActiveAccount(), sum);
         } catch (NotEnoughFundsException e) {
             System.out.println(e.getMessage());
         }

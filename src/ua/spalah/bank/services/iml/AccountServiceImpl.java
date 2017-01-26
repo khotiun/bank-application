@@ -47,6 +47,7 @@ public class AccountServiceImpl implements AccountService {
 
         }
     }
+
     public void transfer(Account fromAccount, Account toAccount, double amount) throws NotEnoughFundsException {
         withdraw(fromAccount, amount);
         deposit(toAccount, amount);

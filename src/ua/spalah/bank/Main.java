@@ -12,10 +12,10 @@ public class Main {
     public static void main(String[] args) {
         Bank bank = new Bank();
         Client client1 = new Client("Vlad", Gender.MALE);
-        Client client2 = new Client("Anton",Gender.MALE);
-        Client client3 = new Client("Oly",Gender.FEMALE);
-        Client client4 = new Client("Vika",Gender.FEMALE);
-        Client client5 = new Client("Oleg",Gender.MALE);
+        Client client2 = new Client("Anton", Gender.MALE);
+        Client client3 = new Client("Oly", Gender.FEMALE);
+        Client client4 = new Client("Vika", Gender.FEMALE);
+        Client client5 = new Client("Oleg", Gender.MALE);
         List<Client> clients = new ArrayList<>();
         clients.add(client1);
         clients.add(client2);
@@ -25,10 +25,10 @@ public class Main {
 
         bank.setClients(clients);
 
-        CheckingAccount checkingAccount = new CheckingAccount(5000,2000);
+        CheckingAccount checkingAccount = new CheckingAccount(5000, 2000);
         SavingAccount savingAccount1 = new SavingAccount(5000);
         SavingAccount savingAccount2 = new SavingAccount(8000);
-        CheckingAccount checkingAccount1 = new CheckingAccount(4000,1000);
+        CheckingAccount checkingAccount1 = new CheckingAccount(4000, 1000);
 
 
 //        PrintClientListener printClientListener = new PrintClientListener();

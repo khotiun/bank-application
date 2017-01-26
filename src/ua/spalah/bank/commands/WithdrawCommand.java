@@ -23,7 +23,7 @@ public class WithdrawCommand implements Command {//снимает деньги �
         Scanner scanner = new Scanner(System.in);
         int withdraw = Integer.parseInt(scanner.nextLine());
         try {
-            accountService.withdraw(BankCommander.currentClient.getActiveAccount(),withdraw);
+            accountService.withdraw(BankCommander.currentClient.getActiveAccount(), withdraw);
         } catch (NotEnoughFundsException e) {
             System.out.println(e.getMessage());
         }

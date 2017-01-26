@@ -70,7 +70,7 @@ public class BankReportServiceImpl implements BankReportService {
                     listCity.get(client.getCity()).add(client);
                 } else {
                     List<Client> listClient = new ArrayList<>();
-                    listCity.put(client.getCity(),listClient);
+                    listCity.put(client.getCity(), listClient);
                 }
             }
         }

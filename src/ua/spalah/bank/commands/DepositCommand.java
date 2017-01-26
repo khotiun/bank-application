@@ -20,7 +20,7 @@ public class DepositCommand implements Command {//кладет введенну�
     public void execute() {
         System.out.println("Enter the amount you want to deposit :");//Введите сумму которую хотите положить на счет
         Scanner scanner = new Scanner(System.in);
-        int  amount = scanner.nextInt();
+        int amount = scanner.nextInt();
         try {
             accountService.deposit(BankCommander.currentClient.getActiveAccount(), amount);
         } catch (IllegalArgumentException e) {
@@ -35,6 +35,6 @@ public class DepositCommand implements Command {//кладет введенну�
 
     @Override
     public boolean selectCurentClient() {
-        return false;
+        return true;
     }
 }

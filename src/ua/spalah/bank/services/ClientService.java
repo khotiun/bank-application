@@ -12,11 +12,17 @@ import java.util.List;
  */
 public interface ClientService {
     Client findClientByName(Bank bank, String name) throws ClientNotFoundException;
+
     List<Client> findAllClients(Bank bank);
+
     Client saveClient(Bank bank, Client client);
+
     void deleteClient(Bank bank, Client client);
+
     void addAccount(Account account, Client client);
+
     void setActiveAccount(Account account, Client client);
+
     double getTotalBalance(Client client);
 
 }

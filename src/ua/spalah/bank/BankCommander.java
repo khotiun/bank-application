@@ -108,9 +108,11 @@ public class BankCommander {
                     System.out.println("Incorrect data entered");
                 }
             } else {
-                for (int i = 0; i < 5; i++) {
-                    System.out.print("Enter " + (i + 1) + " ");
-                    commands[i].printCommandInfo();
+                for (int i = 0; i < commands.length; i++) {
+                    if(!commands[i].selectCurentClient()) {
+                        System.out.print("Enter " + (i + 1) + " ");
+                        commands[i].printCommandInfo();
+                    }
                 }
                 int choice = 0;
                 try {
