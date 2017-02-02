@@ -22,14 +22,14 @@ public class TransferCommand implements Command {//переводит деньг
 
     @Override
     public void execute() {
-        for (Client client : BankCommander.currentBank.getClients()) {
+        for (Client client : BankCommander.currentBank.getClients().values()) {
             System.out.println(client.getName());
         }
         System.out.println("Enter the name of the client on whose account you want to transfer money :");//Введите имя клиента на счет которого вы хотите перевести деньги
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
         Client toClient = null;
-        for (Client client : BankCommander.currentBank.getClients()) {
+        for (Client client : BankCommander.currentBank.getClients().values()) {
             if (client.getName().equals(name)) {
                 toClient = client;
             }

@@ -19,33 +19,32 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void withdraw(Account account, double amount) throws NotEnoughFundsException, OverdraftLimitExceededException {
+    public void withdraw(Account account, double amount) throws NotEnoughFundsException {
         if (amount <= 0) throw new IllegalArgumentException("Amount can't be negative");
-        {
-            switch (account.getType()) {
-                case SAVING: {
-                    double balance = account.getBalance();
-                    if (balance >= amount) {
-                        account.setBalance(balance - amount);
-                    } else {
-                        throw new NotEnoughFundsException(balance);
-                    }
-                    break;
+        switch (account.getType()) {
+            case SAVING: {
+                double balance = account.getBalance();
+                if (balance >= amount) {
+                    account.setBalance(balance - amount);
+                } else {
+                    throw new NotEnoughFundsException(balance);
                 }
-                case CHECKING: {
-                    double available = account.getBalance() + ((CheckingAccount) account).getOverdraft();
-                    if (available >= amount) {
-                        account.setBalance(available - amount);
-                    } else {
-                        throw new OverdraftLimitExceededException(available);
-                    }
-                    break;
-                }
-                default:
-                    throw new IllegalArgumentException("Unknown account type");
+                break;
             }
-
+            case CHECKING: {
+                double available = account.getBalance() + ((CheckingAccount) account).getOverdraft();
+                if (available >= amount) {
+                    account.setBalance(available - amount);
+                } else {
+                    throw new OverdraftLimitExceededException(available);
+                }
+                break;
+            }
+            default:
+                throw new IllegalArgumentException("Unknown account type");
         }
+
+
     }
 
     public void transfer(Account fromAccount, Account toAccount, double amount) throws NotEnoughFundsException {

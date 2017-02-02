@@ -7,7 +7,7 @@ import ua.spalah.bank.models.Client;
 import ua.spalah.bank.services.ClientService;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 /**
  * Created by MyPc on 05.01.2017.
@@ -16,30 +16,28 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
-        List<Client> allClient = bank.getClients();
-        for (Client client : allClient) {
-            if (client.getName().equals(name))
-                return client;
+        for (String iName : bank.getClients().keySet()) {
+            if (iName.equalsIgnoreCase(name)) {
+               return bank.getClients().get(iName);
+            }
         }
         throw new ClientNotFoundException(name);
     }
 
     @Override
-    public List<Client> findAllClients(Bank bank) {
+    public Map<String,Client> findAllClients(Bank bank) {
         return bank.getClients();
     }
 
     @Override
     public Client saveClient(Bank bank, Client client) {
-        bank.getClients().add(client);
+        bank.getClients().put(client.getName(), client);
         return client;
     }
 
     @Override
-    public void deleteClient(Bank bank, Client client) {
-        List<Client> clients = bank.getClients();
-        if (clients.contains(client))
-            clients.remove(client);
+    public void deleteClient(Bank bank, Client client){
+        bank.getClients().remove(client);
     }
 
     @Override

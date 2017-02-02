@@ -23,7 +23,7 @@ public class Main {
         clients.add(client4);
         clients.add(client5);
 
-        bank.setClients(clients);
+//        bank.setClients(clients);
 
         CheckingAccount checkingAccount = new CheckingAccount(5000, 2000);
         SavingAccount savingAccount1 = new SavingAccount(5000);

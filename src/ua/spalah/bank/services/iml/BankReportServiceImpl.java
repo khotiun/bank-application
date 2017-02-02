@@ -18,7 +18,7 @@ public class BankReportServiceImpl implements BankReportService {
     @Override
     public int getNumberOfAccounts(Bank bank) {
         int sumAccounts = 0;
-        for (Client client : bank.getClients()) {
+        for (Client client : bank.getClients().values()) {
             sumAccounts += client.getAccounts().size();
         }
         return sumAccounts;
@@ -27,7 +27,7 @@ public class BankReportServiceImpl implements BankReportService {
     @Override
     public double getTotalAccountSum(Bank bank) {
         double sum = 0;
-        for (Client client : bank.getClients()) {
+        for (Client client : bank.getClients().values()) {
             for (Account account : client.getAccounts()) {
                 sum += account.getBalance();
             }
@@ -38,7 +38,7 @@ public class BankReportServiceImpl implements BankReportService {
     @Override
     public double getBankCreditSum(Bank bank) {
         double sumCredit = 0;
-        for (Client client : bank.getClients()) {
+        for (Client client : bank.getClients().values()) {
             for (Account account : client.getAccounts()) {
                 if (account.getType().equals(AccountType.CHECKING)) {
                     CheckingAccount checkingAccount = (CheckingAccount) account;
@@ -51,7 +51,7 @@ public class BankReportServiceImpl implements BankReportService {
 
     @Override
     public List<Client> getClientsSortedByName(Bank bank) {
-        List<Client> clients = bank.getClients();
+        List<Client> clients = new ArrayList<>(bank.getClients().values());
         clients.sort(new Comparator<Client>() {
             @Override
             public int compare(Client client1, Client client2) {
@@ -64,7 +64,7 @@ public class BankReportServiceImpl implements BankReportService {
     @Override
     public Map<String, List<Client>> getClientsByCity(Bank bank) {
         Map<String, List<Client>> listCity = new TreeMap<>();
-        for (Client client : BankCommander.currentBank.getClients()) {
+        for (Client client : BankCommander.currentBank.getClients().values()) {
             if (client.getCity() != null) {
                 if (listCity.containsKey(client.getCity())) {
                     listCity.get(client.getCity()).add(client);

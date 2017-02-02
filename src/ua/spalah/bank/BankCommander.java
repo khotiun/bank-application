@@ -45,11 +45,11 @@ public class BankCommander {
         client3.setAccount(savingAccount2);
         client4.setAccount(savingAccount1);
 
-        currentBank.getClients().add(client1);
-        currentBank.getClients().add(client2);
-        currentBank.getClients().add(client3);
-        currentBank.getClients().add(client4);
-        currentBank.getClients().add(client5);
+        currentBank.getClients().put(client1.getName(),client1);
+        currentBank.getClients().put(client2.getName(),client2);
+        currentBank.getClients().put(client3.getName(),client3);
+        currentBank.getClients().put(client4.getName(),client4);
+        currentBank.getClients().put(client5.getName(),client5);
 
 
         commands = new Command[11];
